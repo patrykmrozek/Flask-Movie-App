@@ -1,6 +1,3 @@
-# Admin Login - Username: admin  -  Password: chadmin123
-# admin features can be seen in /movies and in the /movie/movie_id pages
-
 from flask import Flask, render_template, redirect, url_for, make_response, request, session
 from database import get_db, close_db, g
 from flask_session import Session
