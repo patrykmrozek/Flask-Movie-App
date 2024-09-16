@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+
+
+<h1> ADMIN </h1>
+
+<h2>Update {{user_id}}'s Account</h2>
+
+
+<form action="" method="Post" novalidate>
+    <br>
+    {{ form.csrf_token }}
+    {{form.admin.label}}
+    {{form.admin() }}
+    {% for error in form.admin.errors %}
+        {{error}}
+    {%endfor%}
+    
+    <br>
+    {{form.submit()}}
+
+
+</form>
+
+
+
+
+<footer><small>All posters created by me.</small></footer>
+
+{% endblock %}

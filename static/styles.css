@@ -1,0 +1,403 @@
+@font-face {
+    font-family: Roboto;
+    src: url('fonts/Roboto-Regular.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: Antonio;
+    src: url('fonts/antonio.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: Bowlby;
+    src: url('fonts/Bowlby.ttf') format('TrueType');
+}
+
+
+
+
+html {
+    background-color: var(--primary-colour);
+
+    --primary-colour: lightgray;
+    --secondary-colour: black;
+    --third-colour: white;
+
+    font-family: Roboto;
+
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-colour);
+}
+
+h1 {
+    text-align: center;
+    font-family: Antonio;
+    font-size: 5em;
+}
+
+h2 {
+    text-align: center;
+    font-family: Antonio;
+    font-size: 3em;
+}
+
+form {
+    text-align: center;
+}
+
+nav {
+    position: relative;
+    width: 100%;
+}
+
+nav * {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: Roboto;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav li:first-child {
+    font-size: 2em;;
+}
+
+nav li {
+    padding: 1%;
+    transition: 0.5s;
+}
+
+nav li:hover{
+    transform: scale(1.2);
+}
+
+.registration, .login {
+    background-color: gray;
+    width: 30%;
+    margin: 0em auto;
+}
+
+.registration input, .login input{
+    margin: 2%;
+    padding: 1%;
+    background-color: white;
+    border-radius: 1.5em;
+    
+}
+
+#movies ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#movies li {
+    list-style: none;
+    flex-direction: row;
+    width: 20%;
+    margin: 2%;
+    transition: 0.2s;
+    transform-origin: center;
+    vertical-align: top;
+    position: relative;
+}
+
+#movies li img {
+    width: 100%;
+    transition: 0.2s;
+}
+
+#movies li .title {
+    display: none;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.2s;
+    font-family: Roboto;
+    font-size:1.5em;
+    margin: 0;
+    color: white;
+    text-shadow: 2px 1px 2px black;
+}
+
+#movies img:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+}
+
+#movies li:hover .title{
+    display: block;
+    opacity: 150%
+
+}
+
+
+p {
+    text-align: center;
+}
+
+p a {
+    color: red;
+    text-decoration: underline;
+}
+
+
+#movie {
+    display: flex;
+    /* align-items: center; */
+}
+
+#movie img {
+    flex: 0 0 50%; 
+    padding-right: 20px;
+}
+
+.movie_details{
+    flex: 1; 
+    padding: 10%;
+    padding-left: 0;
+}
+
+.movie_details *{
+    font-size: 2em;
+    text-align: left;
+    padding: 10%;
+    font-family: Roboto;
+}
+
+.movie_details label, .movie_details select, .movie_details  input{
+    font-size: 1em;
+}
+
+.movie_details input, .movie_details select{
+    padding: 2%;
+}
+
+#movie img {
+    width: 100%;
+    max-width: 100%;
+    height: auto; 
+    height: 70%;
+}
+
+
+#home_movies {
+    transition: 0.5s;
+    margin: 2%;
+}
+
+
+#home_movies ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#home_movies li {
+    list-style: none;
+    flex-direction: row;
+    width: 10%;
+    margin: 2%;
+    transition: 0.2s;
+    transform-origin: center;
+    vertical-align: top;
+    position: relative;
+}
+
+#home_movies li img {
+    width: 100%;
+    transition: 0.2s;
+}
+
+
+
+#home_movies .movie_redirect {
+    display: none;
+    color: white;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.2s;
+    font-family: Roboto;
+    font-size:3em;
+    margin: 0;
+    text-shadow: 2px 1px 2px black;
+}
+
+#home_movies:hover .movie_redirect{
+    display: block;
+
+}
+
+#home_movies:hover img{
+    opacity: 10%;
+
+}
+
+#home_movies:hover .home_rectangle{
+    transform: scale(1.01);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+
+}
+
+.home_rectangle {
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+}
+
+.account-reviews li, #account {
+    list-style: none;
+}
+
+.account-reviews {
+    display: flex;
+}
+
+.nav-icon {
+    position: relative;
+    bottom: 1em;
+    left: 0.5em;
+}
+
+#home_reviews {
+    background-color: gray;
+}
+
+#home_reviews ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#home_reviews li {
+    list-style: none;
+    flex-direction: row;
+    width: 10%;
+    margin: 2%;
+    transition: 0.2s;
+    transform-origin: center;
+    vertical-align: top;
+    position: relative;
+}
+
+#home_reviews li img {
+    width: 100%;
+    transition: 0.2s;
+}
+
+#home_reviews li img:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+    transform: scale(1.05);
+}
+
+.account-ratings {
+    display: flex;
+    position: relative;
+}
+
+.account-ratings li{
+    list-style: none;
+}
+
+
+.account-ratings img {
+    width: 20%;
+}
+
+
+.search li {
+    list-style: none;
+}
+
+.search {
+    background-color: gray;
+}
+
+.user {
+    transition: 0.2s;
+}
+
+.user:hover {
+    color: red;
+    transform: scale(1.1);
+}
+
+
+#favourites {
+    display: flex;
+    position: relative;
+    width: 60%;
+}
+
+#favourites img {
+    width: 95%;
+    flex-direction: row;
+    margin: 1em;
+}
+
+#rating-details * {
+    margin-top: 2em;
+    font-size: 0.5em;
+}
+
+#rating-details #favourite {
+    width: 2em;
+    background-color: black;
+}
+
+/*  Code below was found on the following webpage: */
+/* https://stackoverflow.com/questions/4137255/checkboxes-in-web-pages-how-to-make-them-bigger */ 
+
+input[type='checkbox'] {
+    width:30px;
+    height:30px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #555;
+}
+
+
+.register-pfp { 
+    width: 40%;
+}
+
+.user-pfp {
+    width: 10%;
+    position: absolute;
+    top: 10em;
+    left: 20em;
+}
+
+#movie_results {
+    width: 30%;
+}
+
+#movie_results img {
+    width: 50%;
+}
+
+#movie_results p {
+    position: relative;
+    bottom: 15em;
+    left: 15em
+}
+
+#movie_edit p{
+    font-size: 50%;
+    border: 2px solid black;
+
+}
+
+.login-review {
+    border: 2px solid black;
+}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<h1> {{user_id}}'s Account </h1>
+<img class="user-pfp" src="{{url_for('static', filename= 'pfp/' + pfp[0] ) }}" alt="profile picture">
+
+{% if g.admin == 1%}
+<a href="{{url_for('update_user', user_id=user_id)}}"><p>Update This User</p></a>
+{% endif %}
+
+<section id="favourites">
+    
+
+
+{% if favourite_movies %}
+    <h2>Favourites</h2>
+    {% for movie in favourite_movies%}
+
+    <a href="{{ url_for('movie', movie_id=movie['id']) }}">
+    <p class="title">{{movie['title']}}</p>
+    <img src="{{url_for('static', filename=movie['poster'])}}" alt="poster">
+
+    {% endfor %}
+    
+{% endif %}
+
+
+
+
+
+</section>
+
+
+
+<section class="account-ratings">
+    <h2>Ratings:</h2>
+    <ul>
+        {% for rating in ratings %}
+        <li>
+            <p>{{rating['title']}}</p>
+            <p>{{user_id}}'s Rating: {{rating['user_rating']}}</p>
+            <a href="{{ url_for('movie', movie_id=rating['id']) }}">
+            <img src="{{url_for('static', filename=rating['poster'])}}" alt="poster"></a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+
+<section class="account-reviews">
+    <h2>Reviews:</h2>
+    <ul>
+        {% for review in reviews %}
+        <li>
+            <p>{{review['title']}}</p>
+            <p>"{{review['user_review']}}"</p>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+
+<footer><small>All posters created by me.</small></footer>
+
+{% endblock %}

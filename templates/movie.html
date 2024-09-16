@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+
+
+<h1> {{movie["title"] }}</h1>
+
+
+
+<section id="movie">
+    <img src="{{url_for('static', filename=movie['poster'])}}" alt="poster">
+
+    <section class="movie_details">
+    <p>
+        Year: {{movie['year']}}
+    </p>
+    <p>
+        Director: {{movie['director']}}
+    </p>
+    <p>
+        Score: {{movie['score']}}
+    </p>
+    <p>
+        Description:<br>{{movie['description']}}
+    </p>
+
+    {% if g.admin == 1 %}
+    <section id="movie_edit">
+        <a href="{{url_for('update_movie', movie_id=movie['id'] )}}"><p>Update Movie</p></a>
+        <a href="{{url_for('delete_movie', movie_id=movie['id'] )}}"><p>Delete Movie</p></a>
+    </section>
+    {% endif %}
+    
+    {% if g.user %}
+    <form action="" method="Post" novalidate >
+        <section id="rating-details">
+
+    {{form.hidden_tag()}}
+    {{form.rating.label}}
+    {{form.rating()}}
+    {% for error in form.rating.errors %}
+        {{error}}
+    {%endfor%}
+
+    <br>
+    {{form.review.label}}
+    {{form.review()}}
+    {% for error in form.review.errors %}
+        {{error}}
+    {%endfor%}
+
+    <br>
+    {{form.favourite.label}}
+    {{form.favourite()}}
+    {% for error in form.favourite.errors %}
+        {{error}}
+    {%endfor%}
+</section>
+    
+
+    <br>
+    {{form.submit()}}
+    </form>
+    {% else %}
+
+    <!-- the folloiwng line of code was found here: -->
+    <!-- https://stackoverflow.com/questions/36269485/how-do-i-pass-through-the-next-url-with-flask-and-flask-login -->
+
+    <a class="login-review" href="{{url_for('login', next=url_for('movie', movie_id=movie['id'] )) }}">Login to write a review</a>
+
+    {% endif %}
+
+    {% if reviews %}
+    <p> Reviews:</p>
+    {% for review in reviews %}
+        <a href="{{ url_for('user', user_id=review['user_id']) }}">
+        <p class="user"> {{ review['user_id']}}: {{review['user_review'] }}</p>
+        </a>
+    {% endfor %}
+    {% endif %}
+    
+
+    
+    </section>  
+</section>
+
+
+
+
+<footer><small>All posters created by me.</small></footer>
+
+{% endblock %}

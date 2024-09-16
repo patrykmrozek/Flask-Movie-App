@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<h1> Add User </h1>
+
+
+<form action="" method="Post" novalidate class="registration">
+    {{form.hidden_tag()}}
+    {{form.user_id.label}}
+    {{form.user_id(placeholder="Username")}}
+    {% for error in form.user_id.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+    {{form.password.label}}
+    {{form.password(placeholder="Password")}}
+    {% for error in form.password.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+    {{form.admin.label}}
+    {{form.admin()}}
+    {% for error in form.admin.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+    <br>
+    {{form.profilepic.label}}
+    <br>
+
+    {% for pfp in form.profilepic %}
+    <label>
+    <input type="radio" name="profilepic" value={{pfp.data}} {% if pfp == form.profilepic.data %} checked {% endif %}/>
+    <img class="register-pfp" src="{{url_for('static', filename='pfp/' + pfp.data )}}" alt=pfp.data>
+</label>
+    {%endfor%}
+
+    <br>
+    {% for error in form.profilepic.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+
+    {{form.submit()}}
+
+</form>
+
+{% endblock %}

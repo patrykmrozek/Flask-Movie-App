@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+
+<a href="{{url_for('movies')}}">
+    <section id="home_movies">
+        <div class="home_rectangle">
+
+            <ul>
+                {% for movie in movies %}
+                <li>
+                    <img src="{{url_for('static', filename=movie['poster'])}}" alt="poster">
+                </li>
+                {% endfor %}
+            </ul>
+
+
+            <p class="movie_redirect"> View All Movies</p>
+
+        </div>
+    </section>
+</a>
+
+<h2>Recent Reviews</h2>
+<section id="home_reviews">
+
+    <ul>
+        {% for review in reviews %}
+        <li>
+            <a href="{{url_for('movie', movie_id=review['id'])}}"><img src="{{url_for('static', filename=review['poster'])}}" alt="poster"></a>
+            <p class="review_title">{{review['title']}}</p>
+            <a class="user" href="{{ url_for('user', user_id=review['user_id']) }}">
+            <p>{{review['user_id']}}: "{{review['user_review']}}"</p>
+            <p>{{review['user_id']}}'s Rating: {{review['user_rating']}}</p>
+        </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+</section>
+
+
+<footer><small>All posters created by me.</small></footer>
+
+
+{% endblock %}

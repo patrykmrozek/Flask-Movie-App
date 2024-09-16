@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8' />
+    <title>CA</title>
+    <!-- this stylesheet is linked to every  html page that steals from this base page-->
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='favicon.ico')}}" />
+</head>
+
+<body>
+
+
+    <nav>
+        <ul>
+            <li class="nav-icon"><a href="{{url_for('home')}}"><img src="{{url_for('static', filename='movie-icon.png')}}" alt="movie icon"></a></li>
+            {% if g.user %}
+            <li><a href="{{url_for('movies')}}">Movies</a></li>
+            <li><a href="{{url_for('search')}}">Search</a></li>
+            <li><a href="{{url_for('account')}}">{{g.user}}'s Account</a></li>
+            <li><a href="{{url_for('logout')}}">Logout</a></li>
+
+            {% else %}
+            <li><a href="{{url_for('movies')}}">Movies</a></li>
+            <li><a href="{{url_for('registration')}}">Register</a></li>
+            <li><a href="{{url_for('login')}}">Login</a></li>
+            <li><a href="{{url_for('search')}}">Search</a></li>
+            {% endif%}
+
+            {% if g.admin == 1 %}
+            <li><a href="{{url_for('admin')}}">Add Movie</a></li>
+            <li><a href="{{url_for('add_user')}}">Add User</a></li>
+            {% endif %}
+
+
+        </ul>
+    </nav>
+
+    <main>
+
+        {% block main_content %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+    <a target="_blank" href="https://icons8.com/icon/1f2hiZGACOsP/movie">Movie</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+</footer>
+
+    
+</body>
+
+</htmL>

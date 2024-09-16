@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+
+
+<h1> ADMIN </h1>
+
+<h2>Update Movie</h2>
+
+
+<form action="" method="Post" novalidate>
+    {{form.hidden_tag()}}
+    {{form.title.label}}
+    {{form.title()}}
+    {% for error in form.title.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+    {{form.year.label}}
+    {{form.year()}}
+    {% for error in form.year.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+    {{form.score.label}}
+    {{form.score()}}
+    {% for error in form.score.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+    {{form.director.label}}
+    {{form.director()}}
+    {% for error in form.director.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+    {{form.description.label}}
+    {{form.description()}}
+    {% for error in form.description.errors %}
+        {{error}}
+    {%endfor%}
+    <br>
+    {{form.poster.label}}
+    {{form.poster() }}
+    {% for error in form.poster.errors %}
+        {{error}}
+    {%endfor%}
+    
+    <br>
+    {{form.submit()}}
+
+
+</form>
+
+
+
+
+<footer><small>All posters created by me.</small></footer>
+
+{% endblock %}

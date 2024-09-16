@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+
+    <form action="" method="POST" novalidate class="search">
+        {{ form.csrf_token }}
+        {{form.hidden_tag()}}
+
+        {{form.select.label}}
+        {{form.select()}}
+        {% for error in form.select.errors %}
+            {{error}}
+        {%endfor%}
+
+        <br>
+        
+        {{form.search.label}}
+        {{form.search(placeholder="Search")}}
+        {% for error in form.search.errors %}
+            {{error}}
+        {%endfor%}
+
+        <br>
+        {% if select=="movies" %}
+        
+        {{form.sort.label}}
+        {{form.sort()}}
+        {% for error in form.sort.errors %}
+            {{error}}
+        {%endfor%}
+        {% endif %}
+
+        <br>
+        {{form.submit()}}
+    </form>
+
+
+    <section id="movie_results">
+
+        {% for result in movie_results %}
+        <a href="{{ url_for('movie', movie_id=result['id']) }}"><img src="{{url_for('static', filename=result['poster'])}}" alt="poster"></a>
+        <p>{{result['title']}}</p>
+        <p>{{result['year']}}</p>
+        <p>{{result['score']}}</p>
+        {% endfor %}
+
+    
+    </section>
+
+    <section>
+
+        {% for result in user_results %}
+        <a href="{{ url_for('user', user_id=result['user_id']) }}">
+            <p>{{result['user_id']}}</p>
+        </a>
+        {% endfor%}
+    </section>
+
+
+
+
+{% endblock %}
